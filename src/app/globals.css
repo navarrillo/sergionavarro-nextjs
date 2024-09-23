@@ -24,6 +24,7 @@ body {
   src: url("HalenoirCompact-Light.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @layer utilities {
