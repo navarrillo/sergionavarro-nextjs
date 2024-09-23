@@ -70,6 +70,7 @@ export default function Portfolio() {
             target="_blank"
             rel="noopener noreferrer"
             className="text-white hover:text-blue-200"
+            aria-label="Visit my X acount @SergioNavarroAI"
           >
             <svg
               viewBox="0 0 24 24"
@@ -86,6 +87,7 @@ export default function Portfolio() {
             target="_blank"
             rel="noopener noreferrer"
             className="text-white hover:text-blue-200"
+            aria-label="Visit my Github acount @navarrillo"
           >
             <svg
               viewBox="0 0 24 24"
@@ -102,6 +104,7 @@ export default function Portfolio() {
             target="_blank"
             rel="noopener noreferrer"
             className="text-white hover:text-blue-200"
+            aria-label="Visit my linkedin acount @sergio-navarro-moratalla"
           >
             <svg
               viewBox="0 0 24 24"
