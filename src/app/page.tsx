@@ -1,93 +1,75 @@
-/* eslint-disable react/no-unescaped-entities */
 "use client";
-
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
-import { Input } from "@/components/ui/input";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import Image from "next/image";
+import { Mail, Eye } from "lucide-react";
 import Link from "next/link";
+import { EmailForm } from "@/components/email-form";
 
-export default function Page() {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null; // o un placeholder
-  }
+export default function Portfolio() {
+  const [isEmailFormOpen, setIsEmailFormOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50">
-      <header className="container mx-auto px-4 py-6">
-        <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold">
-            Software engineer empowered by AI
-          </h1>
-          <div className="flex items-center space-x-4">
-            <Input
-              type="search"
-              placeholder="Search..."
-              className="w-64 bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700"
-            />
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            >
-              <span className="sr-only">Toggle theme</span>
-              {theme === "dark" ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-sun"
-                >
-                  <circle cx="12" cy="12" r="4" />
-                  <path d="M12 2v2" />
-                  <path d="M12 20v2" />
-                  <path d="m4.93 4.93 1.41 1.41" />
-                  <path d="m17.66 17.66 1.41 1.41" />
-                  <path d="M2 12h2" />
-                  <path d="M20 12h2" />
-                  <path d="m6.34 17.66-1.41 1.41" />
-                  <path d="m19.07 4.93-1.41 1.41" />
-                </svg>
-              ) : (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="lucide lucide-moon"
-                >
-                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-                </svg>
-              )}
-            </Button>
-          </div>
+    <div
+      className={`min-h-screen w-full relative overflow-hidden font-sans flex items-center justify-center`}
+      style={{ fontFamily: "var(--font-halenoir)" }}
+    >
+      {/* Background gradient */}
+      <div
+        className="absolute inset-0 bg-blue-700"
+        style={{
+          backgroundImage: `
+            radial-gradient(circle at top center, rgba(59, 130, 246, 1) 0%, rgba(37, 99, 235, 0.8) 25%, rgba(30, 64, 175, 0.6) 50%, rgba(30, 58, 138, 0.4) 75%, transparent 100%),
+            linear-gradient(to bottom, #1e40af, #1e3a8a)
+          `,
+          backgroundSize: "100% 100%, 100% 100%",
+          backgroundPosition: "center top, center center",
+          backgroundRepeat: "no-repeat",
+        }}
+      />
+      {/* Content */}
+      <div className="relative z-10 max-w-3xl mx-auto text-left px-4 flex flex-col justify-center h-screen">
+        <h1 className=" font-bold  text-left w-full ">
+          <span
+            className="text-transparent bg-clip-text text-7xl "
+            style={{
+              backgroundImage: "linear-gradient(to right, silver, white)",
+              backgroundPosition: "center bottom",
+            }}
+          >
+            Software Engineer
+          </span>
+          <span className="text-lg font-semibold text-blue-200 mt-2 block md:inline">
+            Empowered by AI
+          </span>
+        </h1>
+        <p className="text-xl mt-5 mb-8 leading-relaxed text-white w-full font-halenoir">
+          I&apos;m Sergio Navarro, 30, and passionate about artificial
+          inteligence. To me, developing software and engineering is a way of
+          art and magic, transforming neural conections into tangible things.
+          I&apos;m on a journey to make a name for myself, actively exploring
+          freelance and new ways to enjoy life.
+        </p>
+        <div className="flex justify-center space-x-4 mb-12">
+          <Button
+            variant="default"
+            className="bg-black text-white hover:bg-gray-800"
+            onClick={() => setIsEmailFormOpen(true)}
+          >
+            <Mail className="mr-2 h-4 w-4" /> Email Me
+          </Button>
+          <Button
+            variant="outline"
+            className="bg-white text-black hover:bg-gray-100"
+          >
+            <Eye className="mr-2 h-4 w-4" /> Portfolio
+          </Button>
         </div>
-        <nav className="mt-6 flex items-center space-x-4">
+        <div className="flex justify-center space-x-6 mt-6">
           <Link
             href="https://x.com/SergioNavarroAI"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-slate-600 hover:text-slate-900 dark:text-blue-400 dark:hover:text-blue-300"
+            className="text-white hover:text-blue-200"
           >
             <svg
               viewBox="0 0 24 24"
@@ -103,7 +85,7 @@ export default function Page() {
             href="https://github.com/navarrillo"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-slate-600 hover:text-slate-900 dark:text-blue-400 dark:hover:text-blue-300"
+            className="text-white hover:text-blue-200"
           >
             <svg
               viewBox="0 0 24 24"
@@ -119,7 +101,7 @@ export default function Page() {
             href="https://www.linkedin.com/in/sergio-navarro-moratalla/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-slate-600 hover:text-slate-900 dark:text-blue-400 dark:hover:text-blue-300"
+            className="text-white hover:text-blue-200"
           >
             <svg
               viewBox="0 0 24 24"
@@ -135,7 +117,7 @@ export default function Page() {
             href="/rss.xml"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-slate-600 hover:text-slate-900 dark:text-blue-400 dark:hover:text-blue-300"
+            className="text-white hover:text-blue-200"
             aria-label="RSS Feed"
           >
             <svg
@@ -148,72 +130,12 @@ export default function Page() {
               <path d="M19.199 24C19.199 13.467 10.533 4.8 0 4.8V0c13.165 0 24 10.835 24 24h-4.801zM3.291 17.415a3.3 3.3 0 0 1 3.293 3.295A3.303 3.303 0 0 1 3.283 24C1.47 24 0 22.526 0 20.71s1.475-3.294 3.291-3.295zM15.909 24h-4.665c0-6.169-5.075-11.245-11.244-11.245V8.09c8.727 0 15.909 7.184 15.909 15.91z" />
             </svg>
           </Link>
-        </nav>
-      </header>
-      <nav className="border-b border-slate-200 dark:border-slate-800">
-        <div className="container mx-auto px-4">
-          <ul className="flex space-x-8">
-            <li>
-              <Link
-                href="#"
-                className="block py-4 text-blue-400 border-b-2 border-blue-400"
-              >
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link href="#" className="block py-4">
-                Newsletter
-              </Link>
-            </li>
-          </ul>
         </div>
-      </nav>
-      <main className="container mx-auto px-4 py-12">
-        <div className="text-center mb-12">
-          <Avatar className="w-32 h-32 mx-auto mb-4">
-            <AvatarImage src="/images/yo400x400.jpg" alt="Sergio Navarro" />
-            <AvatarFallback>SR</AvatarFallback>
-          </Avatar>
-          <h2 className="text-2xl font-bold mb-2">Sergio Navarro</h2>
-          <p className="text-slate-500 dark:text-slate-400 mb-2">0 followers</p>
-          <p className="max-w-md mx-auto text-slate-600 dark:text-slate-300">
-            I'm an independent software engineer using new technologies for
-            developing
-          </p>
-          <Button className="mt-4" variant="outline">
-            Follow
-          </Button>
-        </div>
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="bg-slate-100 dark:bg-slate-800 rounded-lg overflow-hidden">
-            <Image
-              src="/images/placeholder.svg"
-              alt="Weekly Indie Log #43"
-              width={600}
-              height={300}
-              className="w-full h-48 object-cover"
-            />
-            <div className="p-6">
-              <h3 className="text-xl font-bold mb-2">My blog #1</h3>
-              <p className="text-slate-500 dark:text-slate-400">Sep 1, 2024</p>
-            </div>
-          </div>
-          <div className="bg-slate-100 dark:bg-slate-800 rounded-lg overflow-hidden">
-            <Image
-              src="/images/placeholder.svg"
-              alt="Weekly Indie Log #42"
-              width={600}
-              height={300}
-              className="w-full h-48 object-cover"
-            />
-            <div className="p-6">
-              <h3 className="text-xl font-bold mb-2">My blog #2</h3>
-              <p className="text-slate-500 dark:text-slate-400">Aug 25, 2024</p>
-            </div>
-          </div>
-        </div>
-      </main>
+      </div>
+      <EmailForm
+        isOpen={isEmailFormOpen}
+        onClose={() => setIsEmailFormOpen(false)}
+      />
     </div>
   );
 }
