@@ -11,14 +11,19 @@ import {
 } from "@headlessui/react";
 import { validateEmail } from "@/lib/validateEmail";
 
-export const EmailForm = ({ isOpen, onClose }) => {
+interface EmailFormProps {
+  isOpen: boolean; // Define the type for isOpen
+  onClose: () => void; // Define the type for onClose
+}
+
+export const EmailForm: React.FC<EmailFormProps> = ({ isOpen, onClose }) => {
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState(""); // Added state for subject
   const [body, setBody] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!validateEmail(email)) {
       setError("Please enter a valid email address.");

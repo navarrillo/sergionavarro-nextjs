@@ -28,8 +28,8 @@ export async function POST(req: NextRequest) {
     if (files.length >= 20) {
       // Sort files by creation time
       files.sort((a, b) => {
-        const aTime = fs.statSync(path.join(emailDir, a)).ctime;
-        const bTime = fs.statSync(path.join(emailDir, b)).ctime;
+        const aTime = fs.statSync(path.join(emailDir, a)).ctime.getTime(); // Convert to timestamp
+        const bTime = fs.statSync(path.join(emailDir, b)).ctime.getTime(); // Convert to timestamp
         return aTime - bTime;
       });
 
