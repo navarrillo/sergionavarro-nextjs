@@ -21,7 +21,7 @@ export default function RootLayout({
         property="og:description"
         content="Experienced Software Engineer & Development Manager with over 7 Years in Tech Innovation"
       />
-      <meta property="og:image" content="./icon.ico" />
+      <meta property="og:image" content="https://sergionavarro.me/me.jpg" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta property="twitter:domain" content="https://sergionavarro.me" />
@@ -31,7 +31,7 @@ export default function RootLayout({
         name="twitter:description"
         content="Experienced Software Engineer & Development Manager with over 7 Years in Tech Innovation"
       />
-      <meta name="twitter:image" content="./icon.ico" />
+      <meta name="twitter:image" content="https://sergionavarro.me/me.jpg" />
       <body>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
