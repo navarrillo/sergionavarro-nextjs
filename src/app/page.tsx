@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Mail, Eye } from "lucide-react";
+import { Mail, Eye, FileText } from "lucide-react";
 import Link from "next/link";
 import { EmailForm } from "@/components/email-form";
 
@@ -52,16 +52,25 @@ export default function Portfolio() {
         <div className="flex justify-center space-x-4 mb-12">
           <Button
             variant="default"
-            className="bg-black text-white hover:bg-gray-800"
+            className=" text-white hover:bg-white hover:text-black"
             onClick={() => setIsEmailFormOpen(true)}
           >
             <Mail className="mr-2 h-4 w-4" /> Email Me
           </Button>
           <Button
-            variant="outline"
-            className="bg-white text-black hover:bg-gray-100"
+            variant="default"
+            className=" text-white hover:bg-white hover:text-black"
           >
             <Eye className="mr-2 h-4 w-4" /> Portfolio
+          </Button>
+          <Button
+            variant="default"
+            className=" text-white hover:bg-white hover:text-black"
+            onClick={() =>
+              window.open("https://cv.sergionavarro.me/", "_blank")
+            }
+          >
+            <FileText className="mr-2 h-4 w-4" /> CV
           </Button>
         </div>
         <div className="flex justify-center space-x-6 mt-6">
