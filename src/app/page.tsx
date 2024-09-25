@@ -61,7 +61,7 @@ export default function Portfolio() {
             variant="default"
             className=" text-white hover:bg-white hover:text-black"
           >
-            <Eye className="mr-2 h-4 w-4" /> Portfolio
+            <Eye className="mr-2 h-4 w-4" /> Projects
           </Button>
           <Button
             variant="default"
